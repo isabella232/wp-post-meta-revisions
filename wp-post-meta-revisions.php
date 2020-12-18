@@ -159,6 +159,11 @@ class WP_Post_Meta_Revisioning {
 		// Save revisioned meta fields.
 		foreach ( $this->wp_post_revision_meta_keys() as $meta_key ) {
 			$meta_value = get_post_meta( $post_id, $meta_key );
+			
+			// Don't store an empty array indicating no meta values present.
+			if ( $meta_value === [] ) {
+				continue;
+			}
 
 			/*
 			 * Use the underlying add_metadata() function vs add_post_meta()
