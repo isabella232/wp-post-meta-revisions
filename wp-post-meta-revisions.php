@@ -190,7 +190,7 @@ class WP_Post_Meta_Revisioning {
 				delete_post_meta( $post_id, $meta_key );
 				// Get the stored meta, not stored === blank.
 				$meta_values = get_post_meta( $revision_id, $meta_key, true );
-				if ( 0 !== count( $meta_values ) && is_array( $meta_values ) ) {
+				if ( is_array( $meta_values ) && 0 !== count( $meta_values ) ) {
 					foreach ( $meta_values as $meta_value ) {
 						add_post_meta( $post_id, $meta_key, wp_slash( $meta_value ) );
 					}
